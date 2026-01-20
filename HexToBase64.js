@@ -4,7 +4,8 @@ const Readline = require('readline');
 const Primary = '\x1b[38;5;252m';
 const Secondary = '\x1b[2m\x1b[37m';
 const Tertiary = '\x1b[38;5;167m';
-const N̷_A = '\x1b[0m';
+const Quaternary = '\x1b[38;5;107m';
+const Default = '\x1b[0m';
 
 console.log(`${Primary}
  █████   █████                                 ███       ███████████                              ████████  █████ █████ 
@@ -15,7 +16,7 @@ console.log(`${Primary}
  ░███    ░███ ░███░░░    ███░░░███               ███░    ░███    ░███ ███░░███  ░░░░███░███░░░  ░███   ░███       ░███░ 
  █████   █████░░██████  █████ █████            ███░      ███████████ ░░████████ ██████ ░░██████ ░░████████        █████ 
 ░░░░░   ░░░░░  ░░░░░░  ░░░░░ ░░░░░            ░░░       ░░░░░░░░░░░   ░░░░░░░░ ░░░░░░   ░░░░░░   ░░░░░░░░        ░░░░░  
-${N̷_A}`);
+${Default}`);
 
 const Items = (() => {
   try {
@@ -33,7 +34,7 @@ const Items = (() => {
       (Base64.slice(I * 8, I * 8 + 8) || '').padEnd(8, 'A')
     );
   } catch (E) {
-    console.error(`${Tertiary}Error!${N̷_A}`);
+    console.error(`${Tertiary}Error!${Default}`);
     return null;
   }
 })();
@@ -46,7 +47,7 @@ console.log(
       `${Secondary}[${String(I + 1).padStart(
         2,
         '0'
-      )}]${N̷_A} ${Primary}${Item}${N̷_A}`
+      )}]${Default} ${Primary}${Item}${Default}`
   ).join('\n') + '\n'
 );
 
@@ -55,10 +56,12 @@ const Reader = Readline.createInterface({
   output: process.stdout,
 });
 
+console.log(`${Secondary}[1..14]↩${Default}`);
+
 const Prompt = () => {
-  Reader.question(`${Primary}[1..14]↩ ${N̷_A}`, (Response) => {
+  Reader.question(`${Secondary}> ${Default}`, (Response) => {
     if (!Response.trim()) {
-      console.log(`\n${Secondary}Goodbye!${N̷_A}`);
+      console.log(`\n${Quaternary}Goodbye!${Default}`);
       return Reader.close();
     }
     const Selected = Response.trim()
@@ -67,7 +70,7 @@ const Prompt = () => {
       .filter((N) => Number.isInteger(N) && N >= 0 && N < Items.length);
     if (!Selected.length) return Prompt();
     if (!Copy(Selected.map((I) => Items[I]).join('\n'))) {
-      console.error(`${Tertiary}Error!${N̷_A}`);
+      console.error(`${Tertiary}Error!${Default}`);
       return Prompt();
     }
     Prompt();
@@ -82,7 +85,7 @@ const Copy = (Text) => {
     );
     return true;
   } catch (E) {
-    console.error(`${Tertiary}error${N̷_A}`);
+    console.error(`${Tertiary}Error${Default}`);
     return false;
   }
 };

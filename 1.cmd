@@ -1,3 +1,3 @@
 @echo off
-node "%~dp01.js" %*
+node "%~dp0HexToBase64.js" %*
 exit /b %ERRORLEVEL%
