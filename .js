@@ -56,7 +56,7 @@ const Reader = Readline.createInterface({
   output: process.stdout,
 });
 
-console.log(`${Secondary}[1..14]↩${Default}`);
+console.log(`${Secondary}[1-14]↩${Default}`);
 
 const Prompt = () => {
   Reader.question(`${Secondary}> ${Default}`, (Response) => {
