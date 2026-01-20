@@ -1,5 +1,7 @@
 ![IMG](./IMG.png)
 
+Hexadecimal [PokéGlitzer](https://github.com/E-Sh4rk/PokeGlitzer) → Base64 CLI for Pokémon Emerald ACE
+
 [Download Node.js®](https://nodejs.org/en/download)
 
 ```bash
