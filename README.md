@@ -1,4 +1,4 @@
-![IMG](./IMG.png)
+![IMG](./.png)
 
 [Download Node.js®](https://nodejs.org/en/download)
 
